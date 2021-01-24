@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <link rel=stylesheet href="style.css">
+    <title>BLANK</title>
+    <style>
+      
+    </style>
+    
+  </head>
+
+  <body>
+    <h1>Etchin' for a Sketchin'</h1>
+    <div>
+        <p id="gridSizeRead"></p>
+    </div>
+    <div class="slidecontainer">
+        <input type="range" min="4" max="64" value="16" class="slider" id="gridSize">
+      </div>
+
+    <div id="gridContainer"></div>
+
+    <button id="resetButton">Reset</button>
+    <button id="eraseButton">Eraser</button>
+    <button id="blackButton">Paint It Black!</button>
+    <button id="rainbowButton">RAINBOW!</button>
+
+  </body>
+  
+  
+  <script>
+
+    const gridContainer = document.querySelector('#gridContainer');
+    const gridBox = document.createElement('div');
+    const gridTile = document.createElement('div');
+    
+    let gridWidth = 16;
+    let gridInput = document.getElementById("gridSize");
+    let gridSizeRead = document.getElementById("gridSizeRead");
+    gridInput.oninput = function() {
+        gridSizeRead.innerHTML = this.value;
+        gridWidth = this.value;
+        drawGrid();
+        blackHovers()
+    }
+
+    let numberOfTiles = gridWidth*gridWidth;
+    let tileColor = 'black';
+
+    function drawGrid() {
+        gridBox.innerHTML = '';
+        gridBox.classList.add('gridBox');
+        let gridSizeString = 'repeat('+gridWidth+', 1fr)'
+        gridBox.style.gridTemplateRows = gridSizeString;
+        gridBox.style.gridTemplateColumns = gridSizeString;
+        gridTile.classList.add('gridTile');
+
+        let i = 0;
+        while (i < (gridWidth * gridWidth)) {
+            gridBox.appendChild(gridTile.cloneNode(true));
+            ++i;
+        }
+        gridContainer.appendChild(gridBox);
+    };
+    
+    function blackHovers() {
+        const gridTiles = document.querySelectorAll('.gridTile');
+        gridTiles.forEach((gridTile) =>
+            gridTile.addEventListener('mouseover', function (e) {
+                e.target.style.backgroundColor = tileColor;
+                })
+            )
+    };
+
+    function whiteHovers() {
+        const gridTiles = document.querySelectorAll('.gridTile');
+        gridTiles.forEach((gridTile) =>
+            gridTile.addEventListener('mouseover', function (e) {
+                e.target.style.backgroundColor = 'white';
+                })
+            )
+    };
+
+    function generateColor() {
+        randomColor = Math.floor(Math.random()*16777215).toString(16);
+        return '#'+randomColor
+    }
+
+    function rainbowHovers() {
+        const gridTiles = document.querySelectorAll('.gridTile');
+        gridTiles.forEach((gridTile) =>
+            gridTile.addEventListener('mouseover', function (e) {
+                e.target.style.backgroundColor = generateColor();
+                })
+            )
+    };
+
+    function resetGrid() {
+        const gridTiles = document.querySelectorAll('.gridTile');
+        gridTiles.forEach((gridTile) => gridTile.style.backgroundColor = 'white'
+        )
+    };
+
+    drawGrid();
+    blackHovers();
+    
+    document.querySelector('#resetButton').addEventListener('click', resetGrid);
+    document.querySelector('#blackButton').addEventListener('click', blackHovers);
+    document.querySelector('#eraseButton').addEventListener('click', whiteHovers);
+    document.querySelector('#rainbowButton').addEventListener('click', rainbowHovers);
+
+    //const resetButton = document.querySelector('#resetButton')
+    //resetButton.addEventListener('click', resetGrid);
+
+    
+
+  </script>
+
+</html>
