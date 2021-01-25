@@ -1,14 +1,83 @@
 body {
-    background-color: blanchedalmond;
+  height: 100vh;
+  min-width: 720px;
+  padding: 0;
+  background-image: linear-gradient(to right top, #13697d, #008c95, #00af9d, #26d095, #83ef7f);
+}
+
+.leftbox {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.281);
+  border-style: solid;
+  border-color: black;
+  border-radius: 10px;
+  padding: 10px;
+  margin: auto;
+  max-height: 400px;
+  -webkit-box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.287); 
+  box-shadow: 0px 0px 12px 4px rgba(0,0,0,0.287);
+}
+
+.leftboxchild {
+  align-self: center;
+}
+
+.slidecontainer {
+  min-width: 150px;
+  max-width: 80%;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
 }
 
 #gridContainer {
+  display: flex;
+  justify-content: center;
 }
 
 .gridBox {
     display: grid;
-    height: 840px;
-    width: 840px;
+    height: 720px;
+    width: 720px;
+    -webkit-box-shadow: 0px 0px 28px 4px rgba(0,0,0,0.56); 
+    box-shadow: 0px 0px 28px 4px rgba(0,0,0,0.56);
+}
+
+#buttonbox {
+  justify-content:space-around;
+}
+
+button {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0);
+  width: 150px;
+  padding: 8px;
+  color: rgb(0, 0, 0);
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 5px;
+  text-align: center;
+  outline: none;
+  text-decoration: none;
+}
+
+button:hover,
+button:active {
+  background-color: rgba(255, 255, 255, 0.185);
+  color: #000;
+}
+
+
+@media (min-width: 992px) {
+  .leftbox {
+    width: 30vw;
+    height: 60vh;
+  }
+
+  #gridContainer {
+    justify-content: left;
+  }
+
 }
 
 .gridTile {
@@ -18,7 +87,7 @@ body {
     border-style: solid;
     border-width: 1px;
     border-color: rgb(206, 206, 206);
-    border-radius: 1px;
+    border-radius: 2px;
 }
 
 .slider {
