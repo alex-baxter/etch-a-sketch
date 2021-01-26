@@ -8,13 +8,13 @@ body {
 .leftbox {
   display: flex;
   flex-direction: column;
-  background-color: rgba(255, 255, 255, 0.281);
+  background-color: rgba(170, 170, 170, 0.137);
   border-style: solid;
   border-color: black;
+  border-width: 1px;
   border-radius: 10px;
   padding: 10px;
   margin: auto;
-  max-height: 400px;
   -webkit-box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.287); 
   box-shadow: 0px 0px 12px 4px rgba(0,0,0,0.287);
 }
@@ -23,9 +23,18 @@ body {
   align-self: center;
 }
 
+h1 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+#gridSizeRead {
+  margin-bottom: 10px;
+}
+
 .slidecontainer {
   min-width: 150px;
-  max-width: 80%;
+  width: 80%;
   display: flex;
   justify-content: center;
   padding-bottom: 10px;
@@ -45,7 +54,9 @@ body {
 }
 
 #buttonbox {
-  justify-content:space-around;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 button {
@@ -65,13 +76,34 @@ button:hover,
 button:active {
   background-color: rgba(255, 255, 255, 0.185);
   color: #000;
+  outline: none;
 }
 
 
 @media (min-width: 992px) {
   .leftbox {
     width: 30vw;
-    height: 60vh;
+    max-width: 360px;
+    height: 480px;
+    margin: 0px 0px 0px 0px;
+    margin-left: auto;
+    margin-right: 5%;
+    margin-bottom: 20%;
+  }
+  
+  h1 {
+    margin-bottom: 30px;
+    margin-top: 15px;
+  }
+
+  #buttonbox {
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+  }
+
+  button {
+    width: 220px;
   }
 
   #gridContainer {
